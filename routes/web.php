@@ -29,5 +29,17 @@ Route::get('/model', function (){
 //    \App\User::find(3); - Retorna Usuario especifico pelo id
 //    \App\User::Where('name', 'Orin Considine')->first(); - Query com WHERE
 //    \App\User::paginate(10); - Dados Paginados
+
+//    $user = \App\User::create([
+//        'name' => 'Diogo Ferreira',
+//        'email' => 'diogo@teste.com.br',
+//        'password' => bcrypt('0123456789')
+//    ]);
+
+//    $user = \App\User::find(42);
+//    $user->update([
+//       'name' => 'Atualizando com Mass Update'
+//    ]); //Retorna true or false
+
     return \App\User::all();
 });
