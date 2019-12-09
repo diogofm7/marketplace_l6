@@ -16,3 +16,18 @@ Route::get('/', function () {
     return view('welcome', compact('helloWorld'));
 });
 
+Route::get('/model', function (){
+    //$products = \App\Product::all();
+
+//    $user = new \App\User();
+//    $user = \App\User::find(1);
+//    $user->name = 'Usuário Editado';
+//    $user->email = 'email@teste.com';
+//    $user->password = bcrypt('12345678');
+//    $user->save();
+//    \App\User::all(); - Retorna todos os Usuarios
+//    \App\User::find(3); - Retorna Usuario especifico pelo id
+//    \App\User::Where('name', 'Orin Considine')->first(); - Query com WHERE
+//    \App\User::paginate(10); - Dados Paginados
+    return \App\User::all();
+});
