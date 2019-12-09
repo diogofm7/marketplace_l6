@@ -41,5 +41,57 @@ Route::get('/model', function (){
 //       'name' => 'Atualizando com Mass Update'
 //    ]); //Retorna true or false
 
+    //Como Eu faria para pegar a loja de um usuario
+//    $user = \App\User::find(4);
+//    dd($user->store()->count());
+
+   //Pegar produtos da loja
+//    $store = \App\Store::find(1);
+//    return $store->products; | $store->products()->where('id', 4)->get();
+
+    //Pegar categorias de uma loja
+//    $category = \App\Category::find(1);
+//    $category->products;
+
+    //Criar uma loja para um usuario
+//    $user = \App\User::find(10);
+//    $store = $user->store()->create([
+//        'name' => 'Loja Teste',
+//        'description' => 'Loja Teste de Produtos de Insformática',
+//        'phone' => 'XX-XXXXX-XXXX',
+//        'mobile_phone' => 'XX-XXXXX-XXXX',
+//        'slug' => 'loja-teste'
+//    ]);
+
+    //Criar um produto para uma loja
+//    $store = \App\Store::find(41);
+//    $product = $store->products()->create([
+//        'name' => 'Notebook Dell',
+//        'description' => 'Core I5 12GB',
+//        'body' => 'Qualquer Coisa...',
+//        'price' => 2999.90,
+//        'slug' => 'notebook-dell'
+//    ]);
+
+    //Criar uma categoria
+//    \App\Category::create([
+//       'name' => 'Games',
+//       'description' => null,
+//       'slug' => 'games'
+//    ]);
+//
+//    \App\Category::create([
+//        'name' => 'Notebooks',
+//        'description' => null,
+//        'slug' => 'notebooks'
+//    ]);
+//
+//    return \App\Category::all();
+
+    //Adicionar um produto para uma categoria ou vice-versa
+//    $product = \App\Product::find(44);
+//    dd($product->categories()->sync([2]));
+
+
     return \App\User::all();
 });
