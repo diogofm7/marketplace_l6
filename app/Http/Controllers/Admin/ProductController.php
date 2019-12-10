@@ -62,7 +62,9 @@ class ProductController extends Controller
      */
     public function show($product)
     {
-        //
+        $product = $this->product->find($product);
+
+        return $product;
     }
 
     /**

@@ -13,7 +13,7 @@
         <tbody>
             @foreach($stores as $store)
                 <tr>
-                    <td>{{ $store->id }}</td>
+                    <td><a href="{{ route('admin.stores.show', ['store' => $store->id]) }}">{{ $store->id }}</a></td>
                     <td>{{ $store->name }}</td>
                     <td>
                         <div class="btn-group">

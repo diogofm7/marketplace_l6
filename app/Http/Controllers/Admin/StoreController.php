@@ -57,4 +57,10 @@ class StoreController extends Controller
         return redirect()->route('admin.stores.index');
     }
 
+    public function show($store)
+    {
+        $store = \App\Store::find($store);
+        return $store;
+    }
+
 }

@@ -9,16 +9,28 @@
                 <th>Nome</th>
                 <th>Preço</th>
                 <th>Loja</th>
+                <th>Categorias</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             @foreach($products as $product)
                 <tr>
-                    <td>{{ $product->id }}</td>
+                    <td><a href="{{ route('admin.products.show', ['product' => $product->id]) }}">{{ $product->id }}</a></td>
                     <td>{{ $product->name }}</td>
                     <td>R$ {{ number_format($product->price, 2, ',', '.') }}</td>
                     <td>{{ $product->store->name }}</td>
+
+                    <td>
+                        @foreach($product->categories()->get() as $categorie)
+                            @if($loop->last)
+                                {{ $categorie->name }}
+                            @else
+                                {{ $categorie->name }},
+                            @endif
+                        @endforeach
+                    </td>
+
                     <td>
                         <div class="btn-group">
                             <a href="{{ route('admin.products.edit', ['product' => $product->id]) }}" class="btn btn-sm btn-primary">Editar</a>
