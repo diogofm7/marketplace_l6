@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel - {{ $helloWorld }}
+                    Laravel - Marketplace L6
                 </div>
 
                 <div class="links">
