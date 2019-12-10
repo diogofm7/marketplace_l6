@@ -149,6 +149,7 @@ return [
         'age'                   => 'idade',
         'body'                  => 'conteúdo',
         'city'                  => 'cidade',
+        'categories'            => 'categorias',
         'country'               => 'país',
         'date'                  => 'data',
         'day'                   => 'dia',

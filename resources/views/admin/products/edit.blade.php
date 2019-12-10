@@ -48,6 +48,22 @@
             </div>
             @enderror
         </div>
+        <div class="form-group">
+            <label>Categorias</label>
+            <select name="categories[]" class="form-control @error('categories') is-invalid @enderror" multiple>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}"
+                        @if($product->categories->contains($category)) selected @endif
+                    >{{ $category->name }}</option>
+                @endforeach
+            </select>
+
+            @error('categories')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
 
         <div class="form-group">
             <label>Slug</label>
@@ -55,7 +71,7 @@
         </div>
 
         <div>
-            <button type="submit" class="btn btn-lg btn-success">Criar Produto</button>
+            <button type="submit" class="btn btn-lg btn-success">Atualizar Produto</button>
         </div>
     </form>
 @endsection
