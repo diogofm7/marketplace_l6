@@ -24,7 +24,7 @@ class StoreController extends Controller
     {
         $data = $request->all();
 
-        $user = \App\User::find($data['user']);
+        $user = auth()->user();
         $store = $user->store()->create($data);
 
         flash('Loja Criada com sucesso')->success();

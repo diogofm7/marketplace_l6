@@ -14,7 +14,7 @@
 Route::get('/', function () {
     $helloWorld = 'Hello World';
     return view('welcome', compact('helloWorld'));
-});
+})->name('home');
 
 Route::get('/model', function (){
     //$products = \App\Product::all();
@@ -97,7 +97,9 @@ Route::get('/model', function (){
 });
 
 
-Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function (){
+Route::group(['middleware' => ['auth']], function (){
+
+    Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function (){
 
 //    Route::prefix('stores')->name('stores.')->group(function (){
 //
@@ -110,10 +112,16 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function (){
 //
 //    });
 
-    Route::resource('stores', 'StoreController');
-    Route::resource('products', 'ProductController');
+        Route::resource('stores', 'StoreController');
+        Route::resource('products', 'ProductController');
+
+    });
 
 });
 
 
 
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
