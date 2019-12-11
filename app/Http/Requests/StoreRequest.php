@@ -27,7 +27,8 @@ class StoreRequest extends FormRequest
             'name'         => 'required',
             'description'  => 'required|min:10',
             'phone'        => 'required',
-            'mobile_phone' => 'required'
+            'mobile_phone' => 'required',
+            'logo'         => 'image'
         ];
     }
 }
