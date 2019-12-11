@@ -22,7 +22,7 @@
                     <td>{{ $product->store->name }}</td>
 
                     <td>
-                        @foreach($product->categories()->get() as $categorie)
+                        @foreach($product->categories as $categorie)
                             @if($loop->last)
                                 {{ $categorie->name }}
                             @else
