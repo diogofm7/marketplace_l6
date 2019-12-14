@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <h1>Editar Poroduto</h1>
     <form action="{{ route('admin.products.update', ['product' => $product->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
@@ -67,9 +68,9 @@
 
         <div class="form-group">
             <label>Fotos do Produto</label>
-            <input type="file" name="photos[]" class="form-control @error('photos') is-invalid @enderror" multiple>
+            <input type="file" name="photos[]" class="form-control @error('photos.*') is-invalid @enderror" multiple>
 
-            @error('photos')
+            @error('photos.*')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>

@@ -31,4 +31,11 @@ class ProductRequest extends FormRequest
             'photos.*'    => 'image',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'image' => 'O campo photos deve conter somente imagem.'
+        ];
+    }
 }
