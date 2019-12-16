@@ -52,7 +52,9 @@
             <label>Categorias</label>
             <select name="categories[]" class="form-control @error('categories') is-invalid @enderror" multiple>
                 @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option value="{{ $category->id }}"
+                        @if(collect(old('categories'))->contains($category->id)) selected @endif
+                    >{{ $category->name }}</option>
                 @endforeach
             </select>
 
@@ -72,11 +74,6 @@
                 {{ $message }}
             </div>
             @enderror
-        </div>
-
-        <div class="form-group">
-            <label>Slug</label>
-            <input type="text" name="slug" class="form-control">
         </div>
 
         <div>

@@ -25,6 +25,11 @@ class ProductController extends Controller
      */
     public function index()
     {
+        if (!auth()->user()->store()->count()){
+            flash('Você não possui uma loja')->warning();
+            return redirect()->route('admin.stores.index');
+        }
+
         $userStore = auth()->user()->store;
 
         $products = $userStore->products()->paginate(10);
@@ -55,7 +60,10 @@ class ProductController extends Controller
 
         $store = auth()->user()->store;
         $product = $store->products()->create($data);
-        $product->categories()->sync($data['categories']);
+
+        if(!empty($data['categories'])) {
+            $product->categories()->sync($data['categories']);
+        }
 
         if($request->hasFile('photos')){
             $images = $this->imageUpload($request->file('photos'), 'image');

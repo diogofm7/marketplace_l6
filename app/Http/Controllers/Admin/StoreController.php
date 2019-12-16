@@ -19,11 +19,6 @@ class StoreController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->store()->count()){
-            flash('Você não possui uma loja')->warning();
-            return redirect()->route('admin.stores.create');
-        }
-
         $store = auth()->user()->store;
         return view('admin.stores.index', compact('store'));
     }
