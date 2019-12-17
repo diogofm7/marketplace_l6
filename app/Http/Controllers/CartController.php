@@ -56,6 +56,14 @@ class CartController extends Controller
         return redirect()->route('cart.index');
     }
 
+    public function alter(Request $request)
+    {
+        $products = $request->get('product');
+        session()->put('cart', $products);
+        flash('Carrinho Alterado com Sucesso')->success();
+        return redirect()->route('cart.index');
+    }
+
     public function cancel()
     {
         session()->forget('cart');
