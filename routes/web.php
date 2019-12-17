@@ -28,6 +28,10 @@ Route::group(['middleware' => ['auth']], function (){
 
     Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function (){
 
+        Route::get('/', function (){
+            return redirect()->route('admin.stores.index');
+        })->name('index');
+
         Route::resource('stores', 'StoreController');
         Route::resource('products', 'ProductController');
         Route::resource('categories', 'CategoryController');
