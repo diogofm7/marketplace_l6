@@ -24,6 +24,9 @@ Route::prefix('cart')->name('cart.')->group(function (){
 
 });
 
+Route::prefix('checkout')->name('checkout.')->group(function(){
+    Route::get('/', 'checkoutController@index')->name('index');
+});
 
 Route::group(['middleware' => ['auth']], function (){
 

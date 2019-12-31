@@ -30,20 +30,20 @@
             </li>
         </ul>
 
-        @auth
-            <div class="my-2 my-lg-0">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="{{route('cart.index')}}" class="nav-link">
-                            @if(session()->has('cart'))
-                                <span class="badge badge-danger">{{count(session()->get('cart'))}}</span>
-                            @endif
-                            <i class="fa fa-shopping-cart fa-2x"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        @endauth
+
+        <div class="my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="{{route('cart.index')}}" class="nav-link">
+                        @if(session()->has('cart'))
+                            <span class="badge badge-danger">{{count(session()->get('cart'))}}</span>
+                        @endif
+                        <i class="fa fa-shopping-cart fa-2x"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
 
     </div>
 </nav>
