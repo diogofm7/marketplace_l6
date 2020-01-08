@@ -71,7 +71,7 @@ class ProductController extends Controller
         }
 
         //flash('Produto criado com sucesso')->success();
-        toastr()->success('Produto criado com sucesso.', 'Sucesso', ['timeOut' => 3000, 'positionClass' => 'toast-top-full-width']);
+        toastr()->success('Produto criado com sucesso.', 'Sucesso', ['toastClass' => 'toastr', 'timeOut' => 3000, 'positionClass' => 'toast-top-full-width', 'opacity' => 5]);
         return redirect()->route('admin.products.index');
     }
 
