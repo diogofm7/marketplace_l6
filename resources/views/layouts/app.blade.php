@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Marketplace L6</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    @toastr_css
 </head>
 <body>
 
@@ -50,5 +51,10 @@
         @include('flash::message')
         @yield('content')
     </div>
+
+@jquery
+@toastr_js
+@toastr_render
+
 </body>
 </html>
