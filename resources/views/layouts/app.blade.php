@@ -68,6 +68,8 @@
     crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-@toastr_render
+<div class="container">
+    @toastr_render
+</div>
 
 </html>
