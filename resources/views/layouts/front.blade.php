@@ -43,6 +43,11 @@
 
         <div class="my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
+                @auth
+                    <li class="vav-item">
+                        <a href="{{ route('user.orders') }}" class="nav-link @if(request()->is('my-orders')) active @endif">Meus Pedidos</a>
+                    </li>
+                @endauth
                 <li class="nav-item">
                     <a href="{{route('cart.index')}}" class="nav-link">
                         @if(session()->has('cart'))
@@ -64,5 +69,13 @@
 </div>
 
 @yield('scripts')
+
+<script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>

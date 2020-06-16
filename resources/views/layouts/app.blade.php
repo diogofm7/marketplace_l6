@@ -28,8 +28,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             @auth
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item @if(request()->is('admin/orders*')) active @endif">
+                    <a class="nav-link" href="{{ route('admin.orders.my') }}">Meus Pedidos</a>
+                </li>
                 <li class="nav-item @if(request()->is('admin/stores*')) active @endif">
-                    <a class="nav-link" href="{{ route('admin.stores.index') }}">Lojas <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('admin.stores.index') }}">Loja <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item @if(request()->is('admin/products*')) active @endif">
                     <a class="nav-link" href="{{ route('admin.products.index') }}">Produtos</a>
@@ -60,13 +63,14 @@
         @yield('content')
     </div>
 
-</body>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-<script
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</body>
 
 <div class="container">
     @toastr_render
