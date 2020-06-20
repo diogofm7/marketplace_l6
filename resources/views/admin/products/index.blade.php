@@ -18,7 +18,7 @@
                 <tr>
                     <td><a href="{{ route('admin.products.show', ['product' => $product->id]) }}">{{ $product->id }}</a></td>
                     <td>{{ $product->name }}</td>
-                    <td>R$ {{ number_format($product->price, 2, ',', '.') }}</td>
+                    <td>R$ {{ formatPriceToFront($product->price) }}</td>
                     <td>{{ $product->store->name }}</td>
 
                     <td>

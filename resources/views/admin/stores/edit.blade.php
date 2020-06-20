@@ -29,7 +29,7 @@
 
         <div class="form-group">
             <label>Telefone</label>
-            <input type="text" name="phone" class="form-control  @error('phone') is-invalid @enderror" value="{{ $store->phone }}">
+            <input type="text" id="phone" name="phone" class="form-control  @error('phone') is-invalid @enderror" value="{{ $store->phone }}">
 
             @error('phone')
             <div class="invalid-feedback">
@@ -40,7 +40,7 @@
 
         <div class="form-group">
             <label>Celular/Whatsapp</label>
-            <input type="text" name="mobile_phone" class="form-control  @error('mobile_phone') is-invalid @enderror" value="{{ $store->mobile_phone }}">
+            <input type="text" id="mobile_phone" name="mobile_phone" class="form-control  @error('mobile_phone') is-invalid @enderror" value="{{ $store->mobile_phone }}">
 
             @error('mobile_phone')
             <div class="invalid-feedback">
@@ -67,4 +67,14 @@
             <button type="submit" class="btn btn-lg btn-success">Atualizar Loja</button>
         </div>
     </form>
+@endsection
+
+@section('scripts')
+    <script>
+        let imPhone = new Inputmask('(99) 9999-9999');
+        imPhone.mask(document.getElementById('phone'));
+
+        let imMobilePhone = new Inputmask('(99) 99999-9999');
+        imMobilePhone.mask(document.getElementById('mobile_phone'));
+    </script>
 @endsection

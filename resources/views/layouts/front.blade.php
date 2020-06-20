@@ -7,10 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Marketplace L6</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         .front.row {
             margin-bottom: 40px;
+        }
+        .border-2 {
+            border-width:3px !important;
+        }
+
+        img-small.active {
+             border: 5px solid #f00;
+         }
+        .img-small {
+            padding: 3px;
+            background: #fff;
         }
     </style>
 
@@ -47,6 +58,12 @@
                     <li class="vav-item">
                         <a href="{{ route('user.orders') }}" class="nav-link @if(request()->is('my-orders')) active @endif">Meus Pedidos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="event.preventDefault(); document.querySelector('form.logout').submit();">Sair</a>
+                        <form action="{{ route('logout') }}" class="logout" method="post" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
                 @endauth
                 <li class="nav-item">
                     <a href="{{route('cart.index')}}" class="nav-link">
@@ -68,14 +85,10 @@
     @yield('content')
 </div>
 
-@yield('scripts')
-
-<script
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+@yield('scripts')
 
 </body>
 </html>

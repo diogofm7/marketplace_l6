@@ -30,11 +30,13 @@ Route::prefix('checkout')->name('checkout.')->group(function(){
     Route::get('/', 'CheckoutController@index')->name('index');
     Route::post('/proccess', 'CheckoutController@proccess')->name('proccess');
     Route::get('thanks', 'CheckoutController@thanks')->name('thanks');
+
+    Route::post('notification', 'CheckoutController@notification')->name('notification');
 });
 
-Route::group(['middleware' => ['auth']], function (){
+Route::get('my-orders', 'UserOrderController@index')->middleware('auth')->name('user.orders');
 
-    Route::get('my-orders', 'UserOrderController@index')->name('user.orders');
+Route::group(['middleware' => ['auth', 'access.control.store.admin']], function (){
 
     Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function (){
 
@@ -50,8 +52,26 @@ Route::group(['middleware' => ['auth']], function (){
 
         Route::get('orders/my', 'OrdersController@index')->name('orders.my');
 
+        Route::get('notifications', 'NotificationController@notifications')->name('notifications.index');
+        Route::get('notifications/read-all', 'NotificationController@readAll')->name('notifications.read.all');
+        Route::get('notifications/read{notification}', 'NotificationController@read')->name('notifications.read');
+
+
     });
 
 });
 
 Auth::routes();
+
+/*
+Route::get('not', function (){
+    $user = \App\User::find(41);
+    //$user->notify(new \App\Notifications\StoreReceiveNewOrder());
+
+    //$notification = $user->unreadNotifications->first();
+    //$notification->markAsRead();
+
+    return $user->readNotifications->count();
+});
+*/
+

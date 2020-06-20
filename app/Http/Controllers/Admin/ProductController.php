@@ -25,14 +25,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        if (!auth()->user()->store()->count()){
+
+        $user = auth()->user();
+
+        if (!$user->store()->exists()){
             flash('Você não possui uma loja')->warning();
             return redirect()->route('admin.stores.index');
         }
 
-        $userStore = auth()->user()->store;
-
-        $products = $userStore->products()->paginate(10);
+        $products = $user->store->products()->paginate(10);
 
         return view('admin.products.index', compact('products'));
     }
@@ -59,6 +60,9 @@ class ProductController extends Controller
         $data = $request->all();
 
         $store = auth()->user()->store;
+
+        $data['price'] = formatPriceToDatabase($data['price']);
+
         $product = $store->products()->create($data);
 
         if(!empty($data['categories'])) {
@@ -97,6 +101,8 @@ class ProductController extends Controller
     public function edit($product)
     {
         $product = $this->product->findOrFail($product);
+        $product->price = formatPriceToFront($product->price);
+
         $categories = \App\Category::all(['id', 'name']);
         return view('admin.products.edit', compact('product', 'categories'));
     }
@@ -113,6 +119,8 @@ class ProductController extends Controller
         $data = $request->all();
 
         $product = $this->product->find($product);
+        $data['price'] = formatPriceToDatabase($data['price']);
+
         $product->update($data);
         if(empty($data['categories'])){
             $product->categories()->detach();

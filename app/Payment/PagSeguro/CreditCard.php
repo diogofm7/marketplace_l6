@@ -24,7 +24,7 @@ class CreditCard
 
         $creditCard->setReceiverEmail(env('PAGSEGURO_EMAIL')); //Email do recebedor, vindo do .ENV
 
-        $creditCard->setReference($this->reference); //Referencia da venda
+        $creditCard->setReference(base64_encode($this->reference)); //Referencia da venda
 
         $creditCard->setCurrency("BRL"); //Moeda
 
@@ -32,7 +32,7 @@ class CreditCard
 
         foreach ($cartItems as $item) {
             $creditCard->addItems()->withParameters( //Adiciona Item a Venda
-                $this->reference,
+                $item['id'],
                 $item['name'],
                 $item['amount'],
                 $item['price']
