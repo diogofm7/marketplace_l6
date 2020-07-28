@@ -75,3 +75,16 @@ Route::get('not', function (){
 });
 */
 
+Route::get('imagem', function (){
+
+    $width = 100; // your max width
+    $height = 600; // your max height
+    $img = \Intervention\Image\ImageManagerStatic::make('no-photo.jpg');
+    $img->height() > $img->width() ? $width=null : $height=null;
+    $img->resize($width, $height, function ($constraint) {
+        $constraint->aspectRatio();
+    });
+    $img->save('teste.jpg');
+
+    return $img->response('jpg');
+});
